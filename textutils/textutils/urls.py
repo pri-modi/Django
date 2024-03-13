@@ -16,7 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from . import views #Command to import the file made by self, views.py is the name of file made by self
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', views.index, name='index'),
+    path('', views.w3schools, name='w3schools'),
+    path('about/', views.about, name='about'),
 ]
