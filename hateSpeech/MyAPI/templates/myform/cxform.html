@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <title>Speech Detection</title>
 </head>
 <body>
     <form method = 'post'>
@@ -10,6 +10,15 @@
         {{form|linebreaks}}
         <button type ='submit'>Submit</button>
     </form>
+<!--    Displaying the output at the bottom of form-->
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li {% if message.tag %} class= " {{ message.tags }} " {% endif %}>
+            {{ message }} </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
 
 </body>
 </html>

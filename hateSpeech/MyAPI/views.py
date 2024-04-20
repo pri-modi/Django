@@ -5,6 +5,7 @@ from rest_framework.decorators import api_view
 from django.core import serializers
 from rest_framework.response import Response
 from rest_framework import status
+from django.contrib import messages
 from django.http import JsonResponse
 from rest_framework.parsers import JSONParser
 from .models import detection
@@ -82,7 +83,7 @@ def detecting(text):
         sample_cleaned = clean(text)
         sample_vectorized = cv.transform([sample_cleaned]).toarray()
         prediction = clf.predict(sample_vectorized)
-        return  ("Sample Prediction:", prediction)
+        return prediction
 
         # mdl = joblib.load("D:\Django\hateSpeech\MyAPI\SD.pkl")
 
@@ -97,20 +98,8 @@ def xyz(request):
             text = form.cleaned_data['text']
             myDict = (request.POST).dict()
             df = pd.DataFrame(myDict, index = [0])
-            print(detecting(df))
+            answer = detecting(df)
+            messages.success(request, 'Prediction: {}'.format(answer))
 
     form = detectionForm()
     return render(request, 'myform/cxform.html', {'form': form})
-
-
-
-
-
-
-#Cleaning text in tweets
-
-
-
-
-
-
