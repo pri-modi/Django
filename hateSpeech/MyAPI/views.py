@@ -103,3 +103,4 @@ def xyz(request):
 
     form = detectionForm()
     return render(request, 'myform/cxform.html', {'form': form})
+    # return render(request, 'myform/newForm.html', {'form': form})

@@ -7,5 +7,5 @@ router.register('MyAPI', views.detectionView)
 urlpatterns = [
     path('api/', include(router.urls)),
     path('status/', views.detecting),
-    path('form/', views.xyz, name='xyzform')
+    path('form/', views.xyz, name='xyzform'),
 ]
