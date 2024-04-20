@@ -4,7 +4,7 @@ from rest_framework import serializers
 # from rest_framework import detection
 from .models import detection
 
-class detectionSerializers(serializers.ModelSerializers):
+class detectionSerializers(serializers.ModelSerializer):
     class Meta:
         model = detection
         fields = '__all__'
