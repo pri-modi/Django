@@ -1,10 +1,78 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">-->
+<!--    <title>ML API</title>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--</body>-->
+<!--</html>-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Hate Speech Detection</title>
+    <title>Speech Detection</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .form-container {
+            width: 400px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-container form {
+            margin-bottom: 0;
+        }
+
+        .form-container .predict {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
-
+    <div class="form-container">
+        <h1>Hate Speech Detection</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form|linebreaks }}
+            <button type="submit" class="predict">Predict</button>
+        </form>
+        <!-- Displaying the output at the bottom of form -->
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li {% if message.tag %} class="{{ message.tags }}" {% endif %}>
+                {{ message }}
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
 </body>
 </html>

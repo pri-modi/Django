@@ -102,5 +102,5 @@ def xyz(request):
             messages.success(request, 'Prediction: {}'.format(answer))
 
     form = detectionForm()
-    return render(request, 'myform/cxform.html', {'form': form})
-    # return render(request, 'myform/newForm.html', {'form': form})
+    # return render(request, 'myform/cxform.html', {'form': form})
+    return render(request, 'myform/newForm.html', {'form': form})
