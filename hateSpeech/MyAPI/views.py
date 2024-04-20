@@ -65,7 +65,7 @@ def detecting(text):
 
         data["labels"] = data["class"].map({0: "Hate Speech",
                                             1: "Offensive Language",
-                                            2: "Nor Hate neither offensive"})
+                                            2: "Neither Hate nor offensive"})
 
         data = data[["tweet", "labels"]]
         data["tweet"] = data["tweet"].apply(clean)
